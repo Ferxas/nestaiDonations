@@ -6,4 +6,4 @@
 - ```venv\Scripts\Activate.ps1``` or ```source venv/Scripts/activate```
 - ```cd backend/```
 - ```pip install -r requirements.txt```
-- ```python main.py```
+- ```python -m app.main```
