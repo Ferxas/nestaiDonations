@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import get_db
+from backend.models.user_models import get_db
 
 donation_blueprint = Blueprint('donations', __name__)
 
