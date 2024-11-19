@@ -13,6 +13,7 @@ def create_app():
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'jwt_secret_key')
     app.config['MONGODB_URI'] = os.getenv('MONGODB_URI', 'mongodb://localhost:27017/nestai')
     
+    
     # extensions
     CORS(app)
     JWTManager(app)

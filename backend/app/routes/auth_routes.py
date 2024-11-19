@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token
 from app.models import UserModel
+from app.services.email_service import send_email
+from app.services.templates import registration_template
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
 
@@ -19,7 +21,16 @@ def register():
         "name": data['name'],
     }
     UserModel.create_user(new_user)
+
+    # send welcome email
+    send_email(
+        to_email=data['email'],
+        subject="¡Bienvenido/a a Nestai!",
+        html_content=registration_template(data['name'])
+    )
+    
     return jsonify({'message': 'User registered successfully'}), 201
+    
 
 @auth_blueprint.route('/login', methods=['POST'])
 def login():
