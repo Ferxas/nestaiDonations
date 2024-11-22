@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"ferxas321@hotmail.es\",\r\n    \"password\": \"password1234\"\r\n}",
+					"raw": "{\r\n    \"email\": \"ferxas321@hotmail.es\",\r\n    \"password\": \"password1234\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,6 +140,36 @@
 				"header": [],
 				"url": {
 					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userAnalysis",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMjMxOTE4MiwianRpIjoiYzRmYTQwN2QtYTgyMy00ZmJkLTk2YzgtNDg1ZWJmOGQ5NTJiIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImZlcnhhczMyMUBob3RtYWlsLmVzIiwibmJmIjoxNzMyMzE5MTgyLCJjc3JmIjoiNzVkM2NhYTktZTNlYS00ZDBjLTk4ZmUtMTQyODE3Y2UyYjVjIiwiZXhwIjoxNzMyNDA1NTgyfQ.FtFNOy8MX1yjwL3eMY_P58yCHAK0ixn4PIrOWFRMwaQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/users/analysis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"analysis"
+					]
 				}
 			},
 			"response": []
