@@ -24,8 +24,8 @@ def register():
     
     # generate url
     with current_app.app_context():
-        logo_url = url_for("static", filename="images/logo.png", _external=True)
-        # logo_url = url_for("static", filename="https://i.ibb.co/PQDyMf8/logo.png", _external=True)
+        # logo_url = url_for("static", filename="images/logo.png", _external=True)
+        logo_url = "https://i.ibb.co/PQDyMf8/logo.png"
         
         # video_url
         
