@@ -1,4 +1,4 @@
-def registration_template(name):
+def registration_template(name, logo_url, video_url):
     return f"""
     <html>
     <body>
@@ -7,8 +7,13 @@ def registration_template(name):
         <p>En NestAi, creemos en el poder de las personas como tú para cambiar el mundo, un acto de generosidad a la vez. Prepárate, porque tenemos grandes cosas por delante, y nos emociona mucho tenerte a bordo.</p>
         <p>Estamos aquí para cualquier cosa que necesites. ¡Gracias por estar con nosotros y por confiar en esta misión! 💌</p>
         <p>Con tu bienvenida, puedes ver nuestro calendario anual, diseñado especialmente para ti. ¡Esperamos que te guste!</p>
-        <img src=""/>
+        <img src="{logo_url}">
         <p>¡Consulta nuestro calendario anual a continuación!</p>
+        <p>¡Mira este video de bienvenida!</p>
+        <video controls style="width: 300px">
+        <source src="{video_url}" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+        </video>
         <p>Con cariño,</p>
         <p>El equipo de NestAi</p>
     </html>
@@ -78,7 +83,7 @@ def anniversary_template(name):
             <h1>¡Feliz aniversario con NestAi! 🎉</h1>
         </div>
         <div class="body">
-            <p>¡Hola <strong>{{ donor_name }}</strong>! 🎂</p>
+            <p>¡Hola <strong>{name}</strong>! 🎂</p>
             <p>
                 ¡Hoy estamos celebrando un año desde que decidiste formar parte de NestAi! 🎈 
                 Gracias a tu generosidad, muchas vidas han cambiado, y no podríamos estar más agradecidos. 
