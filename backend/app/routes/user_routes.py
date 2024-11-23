@@ -15,6 +15,8 @@ def analyze():
 @user_blueprint.route('/analysis', methods=['GET'])
 @jwt_required()
 def donation_analysis():
+    if request.method == 'OPTIONS':
+        return '', 200  # Responde a la solicitud preflight con un estado 200
     """
     Get data from the database and perform analysis on donations.
     """

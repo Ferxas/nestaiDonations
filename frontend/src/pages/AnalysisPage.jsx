@@ -8,14 +8,14 @@ import api from '../services/api';
 const AnalysisPage = () => {
     
     
-    const [analyssiData, setAnalysisData] = useState(null);
+    const [analysisData, setAnalysisData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+
     useEffect(() => {
         const fetchAnalysisData = async () => {
             try {
-                const response = await api.get("/analysis");
+                const response = await api.get("/users/analysis");
                 setAnalysisData(response.data);
     
             } catch (error) {
@@ -41,8 +41,8 @@ const AnalysisPage = () => {
         <div>
             <h1>Análisis de donaciones</h1>
             <AnalysisTable
-                popularInterests={analysisData.popular_interests}
-                totalDonated={analysisData.total_amount_donated}
+                popularInterests={analysisData.popular_interests || {}}
+                totalDonated={analysisData.total_amount_donated || 0}
             />
             <AgeChart
                 ageDistribution={analysisData.age_distribution}
