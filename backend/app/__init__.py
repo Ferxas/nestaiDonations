@@ -17,7 +17,10 @@ def create_app():
     
     
     # extensions
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+
+    
+    # init jwt
     JWTManager(app)
 
     # routes
