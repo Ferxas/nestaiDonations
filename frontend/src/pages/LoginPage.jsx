@@ -5,15 +5,15 @@ import { setToken } from '../utils/auth'
 
 
 const LoginPage = () => {
-    const [formData, setFormData] = useState({email: '', password: ''});
+    const [formData, setFormData] = useState({ email: '', password: '' });
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({...prev, [name]: value}));
+        setFormData((prev) => ({ ...prev, [name]: value }));
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await api.post('/auth/login', formData);
@@ -26,13 +26,15 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-            <h2>Iniciar sesión</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="email" name='email' onChange={handleChange} placeholder='E-mail' required  />
-                <input type="password" name='password' onChange={handleChange} placeholder='Contraseña' required />
-                <button type='submit'>Iniciar sesión</button>
-            </form>
+        <div className='flex justify-center items-center h-screen bg-gray-100'>
+            <div className='p-8 bg-white shadow-md rounded-md w-96'>
+                <h2 className='text-2xl font-bold mb-6'>Iniciar sesión</h2>
+                <form onSubmit={handleSubmit} className='space-y-4'>
+                    <input type="email" name='email' onChange={handleChange} placeholder='E-mail' required className='w-full p-2 border border-gray-300 rounded-md' />
+                    <input type="password" name='password' onChange={handleChange} placeholder='Contraseña' required className='w-full p-2 border border-gray-300 rounded-md' />
+                    <button type='submit' className='w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700'>Iniciar sesión</button>
+                </form>
+            </div>
         </div>
     )
 }

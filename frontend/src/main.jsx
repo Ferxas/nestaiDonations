@@ -24,6 +24,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import "react-toastify/dist/ReactToastify.css";
 
 
 

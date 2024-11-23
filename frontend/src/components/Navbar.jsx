@@ -11,19 +11,24 @@ const Navbar = () => {
     }
 
     return (
-        <nav>
-            <Link to='/login'></Link>
-            {isAuthenticanted() ? (
-                <>
-                <Link to={"/analysis"}>Análisis</Link>
-                <button onClick={handleLogout}>Cerrar sesión</button>
-                </>
-            ) : (
-                <>
-                <Link to={"/login"}>Iniciar sesión</Link>
-                <Link to={"/register"}>Registrarse</Link>
-                </>
-            )}
+        <nav className='bg-blue-600 text-white p-4 flex justify-between'>
+            <div className='flex space-x-4'>
+
+                <Link to='/login' className='hover:underline'>Inicio</Link>
+                {isAuthenticanted() ? (
+                    <>
+                        <Link to={"/analysis"} className='hover:underline'>Análisis</Link>
+                        <button onClick={handleLogout}>Cerrar sesión</button>
+                    </>
+                ) : (
+                    <>
+                        <div className='flex space-x-4'>
+                            <Link to={"/login"} className='hover:underline'>Iniciar sesión</Link>
+                            <Link to={"/register"} className='hover:underline'>Registrarse</Link>
+                        </div>
+                    </>
+                )}
+            </div>
         </nav>
     )
 }
