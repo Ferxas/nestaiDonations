@@ -4,10 +4,11 @@ from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
 import os
 
+
 load_dotenv()
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='static')
     
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_secret_key')
     app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'jwt_secret_key')
@@ -15,7 +16,10 @@ def create_app():
     
     
     # extensions
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+
+    
+    # init jwt
     JWTManager(app)
 
     # routes

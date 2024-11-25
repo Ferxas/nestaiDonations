@@ -1,35 +1,85 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import AnalysisPage from './pages/AnalysisPage';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import './index.css';
+import { ToastContainer } from 'react-toastify';
+import AIPage from './pages/AIPage';
+import DigitalMarketingPage from './pages/DigitalMarketingPage';
+import DigitalStrategyPage from './pages/DigitalStrategyPage';
+import { AnimatePresence, motion } from 'framer-motion'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
+          <Route path="/login" element={<PageWrapper><LoginPage /></PageWrapper>} />
+          <Route path="/register" element={<PageWrapper><RegisterPage /></PageWrapper>} />
+          <Route
+            path="/services/analysis"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <AnalysisPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/ai"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <AIPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/digital-marketing"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <DigitalMarketingPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/digital-strategy"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <DigitalStrategyPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
+      <ToastContainer position="top-right" autoClose={3000} />
+    </Router>
+  );
+};
 
-export default App
+const PageWrapper = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+
+export default App;

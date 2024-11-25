@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, url_for, current_app
 from flask_jwt_extended import create_access_token
 from app.models import UserModel
 from app.services.email_service import send_email
@@ -21,14 +21,23 @@ def register():
         "name": data['name'],
     }
     UserModel.create_user(new_user)
+    
+    # generate url
+    with current_app.app_context():
+        # logo_url = url_for("static", filename="images/logo.png", _external=True)
+        logo_url = "https://i.ibb.co/PQDyMf8/logo.png"
+        
+        # video_url
+        
+        video_url = url_for("static", filename="videos/welcome.mp4", _external=True)
+        # video_url = url_for("static", filename="videos/welcome.mp4", _external=True)
 
     # send welcome email
     send_email(
         to_email=data['email'],
         subject="¡Bienvenido/a a Nestai!",
-        html_content=registration_template(data['name'])
+        html_content=registration_template(data['name'], logo_url, video_url)
     )
-    
     return jsonify({'message': 'User registered successfully'}), 201
     
 
