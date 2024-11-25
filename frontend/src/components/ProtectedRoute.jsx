@@ -1,12 +1,13 @@
-import {Navigate} from 'react-router-dom';
-import {isAuthenticanted} from '../utils/auth';
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { isAuthenticated } from '../utils/auth';
 
-const ProtectedRoute = ({children}) => {
-  if (!isAuthenticanted()) {
-    return <Navigate to={"/login"} />
+const ProtectedRoute = ({ children }) => {
+  if (!isAuthenticated()) {
+    return <Navigate to="/login" />;
   }
 
-  return children;
-}   
+  return <React.Fragment>{children}</React.Fragment>;
+};
 
 export default ProtectedRoute;

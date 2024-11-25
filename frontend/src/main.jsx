@@ -25,11 +25,14 @@ ChartJS.register(
   Legend
 );
 import "react-toastify/dist/ReactToastify.css";
+import { ThemeProvider } from './context/ThemeContext.jsx';
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <ThemeProvider>
     <App />
+    </ThemeProvider>
   </StrictMode>,
 )

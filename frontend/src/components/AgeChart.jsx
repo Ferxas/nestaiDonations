@@ -30,7 +30,7 @@ const AgeChart = ({ ageDistribution }) => {
     return (
 
         <div>
-            <h2>Distribución de edades</h2>
+            <h2 className='text-2xl mt-10'>Distribución de edades</h2>
             <Bar data={data} options={options} />
         </div>
     )

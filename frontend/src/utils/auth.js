@@ -10,6 +10,6 @@ export const removeToken = () => {
     localStorage.removeItem("token");
 }
 
-export const isAuthenticanted = () => {
+export const isAuthenticated = () => {
     return !!getToken();
 }

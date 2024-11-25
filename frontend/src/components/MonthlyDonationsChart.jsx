@@ -1,26 +1,35 @@
+import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const MonthlyDonationsChart = ({MonthlyDonations}) => {
-    const data = {
-        labels: Object.keys(MonthlyDonations),
-        datasets: [
-            {
-                label: 'Donaciones Mensuales',
-                data: Object.values(MonthlyDonations),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 2,
-                fill: false,
-            }
-        ]
-    }
+const MonthlyDonationsChart = ({ monthlyDonations = {} }) => {
+  // Manejar caso donde no hay datos
+  if (!monthlyDonations || Object.keys(monthlyDonations).length === 0) {
+    return <p>No hay datos de donaciones mensuales disponibles.</p>;
+  }
 
-    return (
-        <div>
-            <h2>Donaciones Mensuales</h2>
-            <Line data={data} />
-        </div>
-    )
-}
+  const data = {
+    labels: Object.keys(monthlyDonations), // Meses
+    datasets: [
+      {
+        label: 'Donaciones Mensuales',
+        data: Object.values(monthlyDonations), // Cantidades de donaciones
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        fill: true,
+      },
+    ],
+  };
 
-export default MonthlyDonationsChart
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+
+  return <Line data={data} options={options} />;
+};
+
+export default MonthlyDonationsChart;

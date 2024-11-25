@@ -25,9 +25,12 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="p-8 bg-white shadow-md rounded-md w-96">
-        <h2 className="text-2xl font-bold mb-6">Registro</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-300">
+      <div className="p-8 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-md rounded-md w-96 transition duration-300">
+        <h2 className="text-2xl font-bold mb-6 text-center">Registro</h2>
+        <p className="text-sm text-gray-600 dark:text-gray-400 m-5">
+          Regístrate para ver las estadísticas y donar.
+        </p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -35,7 +38,7 @@ const RegisterPage = () => {
             placeholder="Nombre completo"
             onChange={handleChange}
             required
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           />
           <input
             type="email"
@@ -43,7 +46,7 @@ const RegisterPage = () => {
             placeholder="Correo electrónico"
             onChange={handleChange}
             required
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           />
           <input
             type="password"
@@ -51,11 +54,11 @@ const RegisterPage = () => {
             placeholder="Contraseña"
             onChange={handleChange}
             required
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
           />
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
+            className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 transition"
           >
             Registrarse
           </button>

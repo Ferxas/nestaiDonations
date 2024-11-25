@@ -1,32 +1,85 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import Navbar from './components/Navbar';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import AnalysisPage from './pages/AnalysisPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import AnalysisPage from './pages/AnalysisPage';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import './index.css';
+import { ToastContainer } from 'react-toastify';
+import AIPage from './pages/AIPage';
+import DigitalMarketingPage from './pages/DigitalMarketingPage';
+import DigitalStrategyPage from './pages/DigitalStrategyPage';
+import { AnimatePresence, motion } from 'framer-motion'
 
 const App = () => {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route
-          path="/analysis"
-          element={
-            <ProtectedRoute>
-              <AnalysisPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/" element={<h1>Inicio</h1>} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<PageWrapper><HomePage /></PageWrapper>} />
+          <Route path="/login" element={<PageWrapper><LoginPage /></PageWrapper>} />
+          <Route path="/register" element={<PageWrapper><RegisterPage /></PageWrapper>} />
+          <Route
+            path="/services/analysis"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <AnalysisPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/ai"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <AIPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/digital-marketing"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <DigitalMarketingPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/services/digital-strategy"
+            element={
+              <ProtectedRoute>
+                <PageWrapper>
+                  <DigitalStrategyPage />
+                </PageWrapper>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
       <ToastContainer position="top-right" autoClose={3000} />
     </Router>
   );
 };
+
+const PageWrapper = ({ children }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
 
 export default App;
