@@ -9,15 +9,15 @@ const AIPage = () => {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-300">
       {/* Primer Bloque */}
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-gray-900 text-purple-500">
-        <h1 className="text-5xl font-bold mb-4 animate-fade-in-down">
+        <h1 className="text-5xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
           Aceleradora de Inteligencia Artificial para ONG
         </h1>
-        <p className="text-lg mb-6 animate-fade-in">
+        <p className="text-lg mb-6 animate-fade-in text-white">
           Acompañamos a las entidades sociales para incorporar soluciones tecnológicas y de Inteligencia Artificial a sus estrategias de marketing y fundraising.
         </p>
         <button
           onClick={scrollToForm}
-          className="bg-purple-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-purple-700 transition duration-300"
+          className="bg-purple-500 text-white px-6 py-3 rounded-full shadow-md hover:bg-purple-700 transition duration-300 "
         >
           Accede al Formulario
         </button>
