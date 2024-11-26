@@ -10,11 +10,11 @@ const AIPage = () => {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-300">
       {/* Primer Bloque */}
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-8 bg-gray-900">
-        <h1 className="text-8xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+        <h1 className="text-8xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent p-5">
           Inteligencia Artificial
         </h1>
-        
-        <h1 className="text-6xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+
+        <h1 className="text-6xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent p-2">
           para ONG
         </h1>
         <p className="text-lg mb-6 animate-fade-in text-white">
@@ -39,7 +39,7 @@ const AIPage = () => {
           className="w-full h-auto object-cover"
         ></video>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-50 p-8">
-          <h1 className="text-6xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
+          <h1 className="text-9xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
             AcademAI
           </h1>
           <p className="text-lg mb-4 animate-fade-in text-white">by NestAI</p>
