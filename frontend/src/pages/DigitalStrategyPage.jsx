@@ -1,7 +1,7 @@
 import React from 'react';
 // Importa la imagen y el video
 import backgroundImage from '../assets/media/image/strategy.jpg';
-import videoSrc from '../assets/media/videos/strategy.mp4';
+import gifSrc from '../assets/media/videos/strategy.gif';
 
 const DigitalStrategyPage = () => {
   return (
@@ -34,16 +34,13 @@ const DigitalStrategyPage = () => {
         </ul>
       </div>
 
-            {/* Video */}
+            {/* GIF */}
             <div className="mt-10 flex items-center justify-center">
-        <video
-          src={videoSrc}
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src={gifSrc}
+          alt="Analysis Animation"
           className="w-[50%] max-w-md rounded-lg shadow-lg"
-        ></video>
+        />
       </div>
       
       <div className="p-8 mt-10">

@@ -1,5 +1,5 @@
 import React from 'react';
-import videoSrc from '../assets/media/videos/ai.gif'; // Importar el video como módulo
+import gifSrc from '../assets/media/videos/ai.gif'; // Importar el video como módulo
 
 const AIPage = () => {
   const scrollToForm = () => {
@@ -28,16 +28,13 @@ const AIPage = () => {
         </button>
       </div>
 
-      {/* Video bloque completo */}
+      {/* GIF bloque completo */}
       <div className="relative">
-        <video
-          src={videoSrc} // Usar el módulo importado para el video
-          autoPlay
-          loop
-          muted
-          playsInline
+        <img
+          src={gifSrc} // Usar el GIF importado
+          alt="Analysis Animation"
           className="w-full h-auto object-cover"
-        ></video>
+        />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-50 p-8">
           <h1 className="text-9xl font-bold mb-4 animate-fade-in-down bg-gradient-to-r from-pink-500 to-yellow-500 bg-clip-text text-transparent">
             AcademAI
