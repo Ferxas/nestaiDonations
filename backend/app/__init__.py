@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+from app.routes.feedback_routes import feedback_blueprint
 from dotenv import load_dotenv
 import os
 
@@ -30,5 +31,7 @@ def create_app():
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
     app.register_blueprint(donation_blueprint, url_prefix='/donations')
     app.register_blueprint(user_blueprint, url_prefix='/users')
+    app.register_blueprint(feedback_blueprint, url_prefix='/api')
+    
     
     return app

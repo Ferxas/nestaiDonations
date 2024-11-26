@@ -1,6 +1,6 @@
 venv
 venv/
 .env
-__pycache__/
+backend/__pycache__/
 /src/assets/media/videos/
 frontend/src/assets/media/videos/ai.mp4

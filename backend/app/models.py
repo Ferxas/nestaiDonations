@@ -17,3 +17,10 @@ class UserModel:
     def create_user(user_data):
         db = get_db()
         return db.users.insert_one(user_data)
+    
+class FeedbackModel:
+    @staticmethod
+    def save_feedback(feedback_data):
+        db = get_db()
+        feedback_collection = db['feedback']
+        feedback_collection.insert_one(feedback_data)
