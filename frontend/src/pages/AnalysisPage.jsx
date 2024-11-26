@@ -5,7 +5,7 @@ import api from '../services/api';
 import AnalysisTable from '../components/AnalysisTable';
 import AgeChart from '../components/AgeChart';
 import MonthlyDonationsChart from '../components/MonthlyDonationsChart';
-import videoSrc from '../assets/media/videos/analysis.mp4'; // Importa tu video
+import videoSrc from '../assets/media/videos/analysis.gif'; // Importa tu video
 
 const AnalysisPage = () => {
     const [analysisData, setAnalysisData] = useState(null);

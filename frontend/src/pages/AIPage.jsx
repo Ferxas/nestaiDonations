@@ -1,5 +1,5 @@
 import React from 'react';
-import videoSrc from '../assets/media/videos/ai.mp4'; // Importar el video como módulo
+import videoSrc from '../assets/media/videos/ai.gif'; // Importar el video como módulo
 
 const AIPage = () => {
   const scrollToForm = () => {
