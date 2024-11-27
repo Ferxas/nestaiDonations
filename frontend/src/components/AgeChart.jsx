@@ -9,29 +9,33 @@ const AgeChart = ({ ageDistribution }) => {
         );
     }
 
+    // Generar colores en escala de azul dinámicamente
+    const generateBlueScale = (count) => {
+        const baseColor = [54, 162, 235]; // Azul base
+        return Array.from({ length: count }, (_, i) => {
+            const opacity = 0.5 + i * (0.4 / count); // Variar opacidad
+            return `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${opacity.toFixed(2)})`;
+        });
+    };
+
+    const labels = Object.keys(ageDistribution).map((age) => `${age} años`);
+    const values = Object.values(ageDistribution);
+
+    const blueScale = generateBlueScale(values.length);
+
     // Configuración de los datos
     const data = {
-        labels: Object.keys(ageDistribution).map((age) => `${age} años`),
+        labels,
         datasets: [
             {
                 label: 'Número de Donantes',
-                data: Object.values(ageDistribution),
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.8)', // Azul
-                    'rgba(255, 99, 132, 0.8)', // Rojo
-                    'rgba(255, 206, 86, 0.8)', // Amarillo
-                    'rgba(75, 192, 192, 0.8)', // Verde
-                    'rgba(153, 102, 255, 0.8)', // Morado
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                ],
+                data: values,
+                backgroundColor: blueScale,
+                borderColor: blueScale.map((color) =>
+                    color.replace(/0\.\d+\)$/, '1)')
+                ), // Convertir a opacidad completa
                 borderWidth: 1,
-                borderRadius: 5, // Esquinas redondeadas
+                borderRadius: 10, // Esquinas redondeadas
             },
         ],
     };
@@ -44,13 +48,20 @@ const AgeChart = ({ ageDistribution }) => {
                 display: true,
                 position: 'top',
                 labels: {
-                    color: 'rgb(75, 75, 75)', // Texto del gráfico
+                    color: '#1e40af', // Azul oscuro
                     font: {
                         size: 14,
+                        weight: 'bold',
                     },
                 },
             },
             tooltip: {
+                backgroundColor: 'rgba(255, 255, 255, 0.9)', // Fondo blanco para el tooltip
+                titleColor: '#1e40af', // Azul oscuro para el título
+                bodyColor: '#1d1d1d', // Texto negro para el cuerpo
+                borderColor: '#cbd5e1', // Borde gris claro
+                borderWidth: 1,
+                cornerRadius: 6,
                 callbacks: {
                     label: (tooltipItem) =>
                         `${tooltipItem.label}: ${tooltipItem.raw} donantes`,
@@ -60,9 +71,10 @@ const AgeChart = ({ ageDistribution }) => {
         scales: {
             x: {
                 ticks: {
-                    color: 'rgb(75, 75, 75)', // Texto en el eje X
+                    color: '#1e40af', // Azul oscuro para las etiquetas
                     font: {
                         size: 12,
+                        weight: 'bold',
                     },
                 },
                 grid: {
@@ -70,24 +82,24 @@ const AgeChart = ({ ageDistribution }) => {
                 },
             },
             y: {
-                type: 'linear',
-                position: 'left',
                 ticks: {
                     stepSize: 50, // Incrementos de 50
-                    color: 'rgb(75, 75, 75)', // Texto en el eje Y
+                    color: '#1e40af', // Azul oscuro para las etiquetas
                     font: {
                         size: 12,
+                        weight: 'bold',
                     },
                 },
                 grid: {
-                    color: 'rgba(200, 200, 200, 0.3)', // Líneas de cuadrícula neutras
+                    color: 'rgba(203, 213, 224, 0.3)', // Líneas de cuadrícula suaves
                 },
                 title: {
                     display: true,
                     text: 'Cantidad de Donantes',
-                    color: 'rgb(75, 75, 75)', // Título del eje
+                    color: '#1e40af', // Azul oscuro para el título
                     font: {
-                        size: 14,
+                        size: 16,
+                        weight: 'bold',
                     },
                 },
             },
@@ -95,8 +107,8 @@ const AgeChart = ({ ageDistribution }) => {
     };
 
     return (
-        <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold text-center mb-4 text-gray-800 dark:text-gray-100">
+        <div className="p-6 bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 rounded-xl shadow-xl">
+            <h2 className="text-2xl font-extrabold text-center mb-6 text-gray-800 dark:text-gray-100 tracking-wide">
                 Distribución de Edades
             </h2>
             <Bar data={data} options={options} />

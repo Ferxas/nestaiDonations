@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -26,40 +25,70 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-300">
-      <div className="p-8 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-md rounded-md w-96 transition duration-300">
-        <h2 className="text-2xl font-bold mb-6 text-center">Registro</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400 m-5">
-          Regístrate para ver las estadísticas y donar.
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-300">
+      <div className="p-8 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg rounded-xl w-96 transition duration-300">
+        {/* Encabezado */}
+        <h2 className="text-3xl font-extrabold text-center mb-4 text-blue-600 dark:text-blue-400">
+          Crear Cuenta
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 text-center">
+          Regístrate para acceder a las estadísticas y contribuir a nuestra causa.
         </p>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Nombre completo"
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            onChange={handleChange}
-            required
-            className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          />
+
+        {/* Formulario */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Campo de Nombre */}
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-2">
+              Nombre completo
+            </label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Ingresa tu nombre"
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Campo de Correo */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-2">
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Ingresa tu correo"
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Campo de Contraseña */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium mb-2">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Crea una contraseña"
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Botón */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 transition"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 transition-transform duration-300 transform hover:scale-105"
           >
             Registrarse
           </button>
@@ -70,4 +99,3 @@ const RegisterPage = () => {
 };
 
 export default RegisterPage;
-

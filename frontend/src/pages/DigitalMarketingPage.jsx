@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import api from '../services/api';
+import extraImage from '../assets/media/image/marketing.jpg'; // Verifica la ruta
 
 const DigitalMarketingPage = () => {
   const [formData, setFormData] = useState({
@@ -39,150 +40,186 @@ const DigitalMarketingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8 transition duration-300 mt-10">
-      <h1 className="text-4xl font-bold mb-4 text-blue-600 dark:text-blue-400">Marketing Digital</h1>
-      <p className="text-lg mb-6">
-        Te ayudamos a llegar a más clientes mediante estrategias efectivas de marketing digital.
-      </p>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8 pt-20 transition duration-300">
+      {/* Encabezado */}
+      <header className="text-center mb-10">
+        <h1 className="text-7xl font-extrabold mb-6 text-blue-600 dark:text-blue-400">Marketing Digital</h1>
+        <p className="text-lg">
+          Encuentra las estrategias perfectas para impulsar tus campañas y lograr un mayor impacto.
+        </p>
+      </header>
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-md shadow-md transition duration-300"
-      >
-        {/* Primera Pregunta */}
-        <div>
-          <label className="block font-medium mb-2">¿Qué te motivó a donar a nuestra causa?</label>
-          <select
-            name="reason"
-            value={formData.reason}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Interés en ayudar a la causa específica.">
-              Interés en ayudar a la causa específica.
-            </option>
-            <option value="Valores personales de solidaridad.">Valores personales de solidaridad.</option>
-            <option value="Referencia de alguien cercano.">Referencia de alguien cercano.</option>
-            <option value="Otro">Otro</option>
-          </select>
-          {formData.reason === 'Otro' && (
-            <input
-              type="text"
-              name="other_reason"
-              placeholder="Especifica"
-              value={formData.other_reason}
-              onChange={handleChange}
-              className="w-full p-2 mt-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            />
-          )}
+      {/* Contenido Principal */}
+      <div className="flex flex-col lg:flex-row lg:space-x-8">
+        {/* Imagen */}
+        <div className="lg:w-1/2 flex items-center justify-center mb-8 lg:mb-0">
+          <img
+            src={extraImage}
+            alt="Digital Marketing"
+            className="rounded-lg shadow-lg w-full lg:w-4/5"
+          />
         </div>
 
-        {/* Segunda Pregunta */}
-        <div>
-          <label className="block font-medium mb-2">
-            ¿Qué tan satisfecho estás con la información que recibes sobre cómo se usan tus donaciones?
-          </label>
-          <select
-            name="satisfaction"
-            value={formData.satisfaction}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            required
+        {/* Encuesta */}
+        <div className="lg:w-1/2">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md space-y-6 transition duration-300"
           >
-            <option value="">Selecciona una opción</option>
-            <option value="Muy satisfecho">Muy satisfecho</option>
-            <option value="Satisfecho">Satisfecho</option>
-            <option value="Insatisfecho">Insatisfecho</option>
-            <option value="Muy insatisfecho">Muy insatisfecho</option>
-          </select>
-        </div>
+            <h2 className="text-3xl font-bold text-center text-blue-600 dark:text-blue-400">
+              Encuesta de Satisfacción
+            </h2>
 
-        {/* Tercera Pregunta */}
-        <div>
-          <label className="block font-medium mb-2">
-            ¿Prefieres recibir actualizaciones sobre el impacto de tu donación?
-          </label>
-          <select
-            name="update_preference"
-            value={formData.update_preference}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Correo electrónico">Correo electrónico</option>
-            <option value="Redes sociales">Redes sociales</option>
-            <option value="Mensajes personalizados">Mensajes personalizados</option>
-            <option value="No me interesa recibir actualizaciones">
-              No me interesa recibir actualizaciones
-            </option>
-          </select>
-        </div>
+            {/* Pregunta 1 */}
+            <div>
+              <label className="block text-lg font-semibold mb-2">
+                ¿Qué te motivó a donar a nuestra causa?
+              </label>
+              <select
+                name="reason"
+                value={formData.reason}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                required
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="Interés en ayudar a la causa específica.">
+                  Interés en ayudar a la causa específica.
+                </option>
+                <option value="Valores personales de solidaridad.">Valores personales de solidaridad.</option>
+                <option value="Referencia de alguien cercano.">Referencia de alguien cercano.</option>
+                <option value="Otro">Otro</option>
+              </select>
+              {formData.reason === 'Otro' && (
+                <input
+                  type="text"
+                  name="other_reason"
+                  placeholder="Especifica"
+                  value={formData.other_reason}
+                  onChange={handleChange}
+                  className="w-full p-3 mt-2 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                />
+              )}
+            </div>
 
-        {/* Cuarta Pregunta */}
-        <div>
-          <label className="block font-medium mb-2">
-            ¿Qué tan importante es para ti recibir agradecimientos personalizados?
-          </label>
-          <select
-            name="appreciation"
-            value={formData.appreciation}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Muy importante">Muy importante</option>
-            <option value="Algo importante">Algo importante</option>
-            <option value="Poco importante">Poco importante</option>
-            <option value="No es importante">No es importante</option>
-          </select>
-        </div>
+            {/* Pregunta 2 */}
+            <div>
+              <label className="block text-lg font-semibold mb-2">
+                ¿Qué tan satisfecho estás con la información que recibes sobre cómo se usan tus donaciones?
+              </label>
+              <select
+                name="satisfaction"
+                value={formData.satisfaction}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                required
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="Muy satisfecho">Muy satisfecho</option>
+                <option value="Satisfecho">Satisfecho</option>
+                <option value="Insatisfecho">Insatisfecho</option>
+                <option value="Muy insatisfecho">Muy insatisfecho</option>
+              </select>
+            </div>
 
-        {/* Quinta Pregunta */}
-        <div>
-          <label className="block font-medium mb-2">
-            ¿Qué tipo de contenido te gustaría recibir de nosotros?
-          </label>
-          <select
-            name="content_preference"
-            value={formData.content_preference}
-            onChange={handleChange}
-            className="w-full p-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            required
-          >
-            <option value="">Selecciona una opción</option>
-            <option value="Historias personales de beneficiarios">
-              Historias personales de beneficiarios
-            </option>
-            <option value="Estadísticas e informes de impacto">Estadísticas e informes de impacto</option>
-            <option value="Oportunidades para participar más activamente">
-              Oportunidades para participar más activamente
-            </option>
-            <option value="Otro">Otro</option>
-          </select>
-          {formData.content_preference === 'Otro' && (
-            <input
-              type="text"
-              name="other_content"
-              placeholder="Especifica"
-              value={formData.other_content}
-              onChange={handleChange}
-              className="w-full p-2 mt-2 border rounded-md border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            />
-          )}
-        </div>
+            {/* Pregunta 3 */}
+            <div>
+              <label className="block text-lg font-semibold mb-2">
+                ¿Prefieres recibir actualizaciones sobre el impacto de tu donación?
+              </label>
+              <select
+                name="update_preference"
+                value={formData.update_preference}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                required
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="Correo electrónico">Correo electrónico</option>
+                <option value="Redes sociales">Redes sociales</option>
+                <option value="Mensajes personalizados">Mensajes personalizados</option>
+                <option value="No me interesa recibir actualizaciones">
+                  No me interesa recibir actualizaciones
+                </option>
+              </select>
+            </div>
 
-        {/* Botón de Enviar */}
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition"
-        >
-          Enviar
-        </button>
-      </form>
+            {/* Pregunta 4 */}
+            <div>
+              <label className="block text-lg font-semibold mb-2">
+                ¿Qué tan importante es para ti recibir agradecimientos personalizados?
+              </label>
+              <select
+                name="appreciation"
+                value={formData.appreciation}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                required
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="Muy importante">Muy importante</option>
+                <option value="Algo importante">Algo importante</option>
+                <option value="Poco importante">Poco importante</option>
+                <option value="No es importante">No es importante</option>
+              </select>
+            </div>
+
+            {/* Pregunta 5 */}
+            <div>
+              <label className="block text-lg font-semibold mb-2">
+                ¿Qué tipo de contenido te gustaría recibir de nosotros?
+              </label>
+              <select
+                name="content_preference"
+                value={formData.content_preference}
+                onChange={handleChange}
+                className="w-full p-3 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                required
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="Historias personales de beneficiarios">
+                  Historias personales de beneficiarios
+                </option>
+                <option value="Estadísticas e informes de impacto">Estadísticas e informes de impacto</option>
+                <option value="Oportunidades para participar más activamente">
+                  Oportunidades para participar más activamente
+                </option>
+                <option value="Otro">Otro</option>
+              </select>
+              {formData.content_preference === 'Otro' && (
+                <input
+                  type="text"
+                  name="other_content"
+                  placeholder="Especifica"
+                  value={formData.other_content}
+                  onChange={handleChange}
+                  className="w-full p-3 mt-2 border rounded-lg bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100"
+                />
+              )}
+            </div>
+
+            {/* Botón de Enviar */}
+            <button
+              type="submit"
+              className="bg-blue-600 text-white py-3 px-6 rounded-lg font-bold hover:bg-blue-700 transition transform hover:scale-105 w-full"
+            >
+              Enviar Encuesta
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Texto Largo */}
+      <section className="mt-16 max-w-6xl mx-auto space-y-8">
+        <h2 className="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6">
+          El Impacto del Marketing Digital
+        </h2>
+        <p className="text-lg leading-relaxed mb-4">
+          El marketing digital es una herramienta poderosa que permite a las organizaciones conectar con sus audiencias
+          de manera significativa. A través de estrategias innovadoras, puedes maximizar el impacto de tu mensaje y
+          generar un cambio real.
+        </p>
+      </section>
     </div>
   );
 };

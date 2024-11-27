@@ -5,7 +5,7 @@ const MonthlyDonationsChart = ({ monthlyDonations = {} }) => {
   // Manejar caso donde no hay datos
   if (!monthlyDonations || Object.keys(monthlyDonations).length === 0) {
     return (
-      <p className="text-center text-gray-500 mt-4">
+      <p className="text-center text-gray-500 mt-6 text-lg font-semibold">
         No hay datos de donaciones mensuales disponibles.
       </p>
     );
@@ -18,15 +18,15 @@ const MonthlyDonationsChart = ({ monthlyDonations = {} }) => {
       {
         label: 'Donaciones Mensuales',
         data: Object.values(monthlyDonations), // Cantidades de donaciones
-        borderColor: 'rgba(54, 162, 235, 1)', // Azul vibrante
-        backgroundColor: 'rgba(54, 162, 235, 0.2)', // Azul claro para el área bajo la línea
-        pointBackgroundColor: 'rgba(54, 162, 235, 1)', // Color de los puntos
+        borderColor: 'rgba(78, 115, 223, 1)', // Azul moderno
+        backgroundColor: 'rgba(78, 115, 223, 0.2)', // Azul claro para el área bajo la línea
+        pointBackgroundColor: 'rgba(78, 115, 223, 1)', // Color de los puntos
         pointBorderColor: '#ffffff', // Borde blanco en los puntos
         pointHoverBackgroundColor: '#ffffff', // Fondo blanco al pasar el mouse
-        pointHoverBorderColor: 'rgba(54, 162, 235, 1)', // Borde azul vibrante al pasar el mouse
-        pointRadius: 4, // Tamaño de los puntos
-        pointHoverRadius: 6, // Tamaño de los puntos al pasar el mouse
-        borderWidth: 2,
+        pointHoverBorderColor: 'rgba(78, 115, 223, 1)', // Borde azul moderno al pasar el mouse
+        pointRadius: 5, // Tamaño de los puntos
+        pointHoverRadius: 8, // Tamaño de los puntos al pasar el mouse
+        borderWidth: 3,
         tension: 0.4, // Suavizado de la línea
         fill: true, // Rellenar debajo de la línea
       },
@@ -41,13 +41,20 @@ const MonthlyDonationsChart = ({ monthlyDonations = {} }) => {
         display: true,
         position: 'top',
         labels: {
-          color: 'rgb(75, 75, 75)', // Color del texto
+          color: '#4e73df', // Azul moderno
           font: {
-            size: 14,
+            size: 16,
+            weight: 'bold',
           },
         },
       },
       tooltip: {
+        backgroundColor: 'rgba(255, 255, 255, 0.9)', // Fondo blanco para el tooltip
+        titleColor: '#4e73df', // Título en azul
+        bodyColor: '#1d1d1d', // Texto en negro
+        borderColor: '#d1d1d1', // Borde gris claro
+        borderWidth: 1,
+        cornerRadius: 6,
         callbacks: {
           label: (tooltipItem) =>
             `Donaciones: $${tooltipItem.raw.toLocaleString()}`,
@@ -57,9 +64,10 @@ const MonthlyDonationsChart = ({ monthlyDonations = {} }) => {
     scales: {
       x: {
         ticks: {
-          color: 'rgb(75, 75, 75)', // Texto en el eje X
+          color: '#4e73df', // Azul moderno
           font: {
-            size: 12,
+            size: 14,
+            weight: 'bold',
           },
         },
         grid: {
@@ -68,33 +76,47 @@ const MonthlyDonationsChart = ({ monthlyDonations = {} }) => {
       },
       y: {
         ticks: {
-          color: 'rgb(75, 75, 75)', // Texto en el eje Y
+          color: '#4e73df', // Azul moderno
           font: {
-            size: 12,
+            size: 14,
+            weight: 'bold',
           },
           callback: (value) => `$${value.toLocaleString()}`, // Formato de valores
         },
         grid: {
-          color: 'rgba(200, 200, 200, 0.3)', // Líneas de cuadrícula suaves
+          color: 'rgba(234, 236, 244, 0.7)', // Líneas de cuadrícula suaves
+          borderDash: [5, 5], // Líneas punteadas
         },
         title: {
           display: true,
-          text: 'Cantidad Donada ($)',
-          color: 'rgb(75, 75, 75)', // Título del eje
+          text: 'Cantidad Donada (€)',
+          color: '#4e73df', // Título del eje en azul
           font: {
-            size: 14,
+            size: 16,
+            weight: 'bold',
           },
         },
+      },
+    },
+    animations: {
+      tension: {
+        duration: 1000,
+        easing: 'easeOutQuart',
+        from: 0.4,
+        to: 0.6,
+        loop: true,
       },
     },
   };
 
   return (
-    <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-4 text-gray-800 dark:text-gray-100">
+    <div className="p-6 bg-gradient-to-br from-white via-blue-50 to-blue-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 rounded-xl shadow-xl">
+      <h2 className="text-3xl font-extrabold text-center mb-6 text-gray-800 dark:text-gray-100 tracking-wide">
         Donaciones Mensuales
       </h2>
-      <Line data={data} options={options} />
+      <div className="animate-fade-in">
+        <Line data={data} options={options} />
+      </div>
     </div>
   );
 };

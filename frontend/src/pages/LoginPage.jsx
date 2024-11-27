@@ -33,32 +33,54 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex items-center justify-center transition duration-300">
-      <div className="bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 p-8 rounded-md shadow-md w-96 transition duration-300">
-        <h2 className="text-2xl font-bold text-center mb-6 flex items-center justify-center space-x-2 text-blue-600 dark:text-blue-400">
-          <FaSignInAlt />
-          <span>Iniciar Sesión</span>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition duration-300">
+      <div className="p-8 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg rounded-xl w-96 transition duration-300">
+        {/* Encabezado */}
+        <h2 className="text-3xl font-extrabold text-center mb-4 text-blue-600 dark:text-blue-400">
+          Iniciar Sesión
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            onChange={handleChange}
-            required
-            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            onChange={handleChange}
-            required
-            className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-          />
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 text-center">
+          Accede a tu cuenta para explorar nuestras estadísticas y funcionalidades.
+        </p>
+
+        {/* Formulario */}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Campo de Correo */}
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-2">
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Ingresa tu correo"
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Campo de Contraseña */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium mb-2">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Ingresa tu contraseña"
+              onChange={handleChange}
+              required
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Botón */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 transition"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800 transition-transform duration-300 transform hover:scale-105"
           >
             Iniciar Sesión
           </button>
@@ -69,3 +91,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
